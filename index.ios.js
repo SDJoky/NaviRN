@@ -15,12 +15,34 @@ import {
   NativeModules,
   LayoutAnimation,
   TouchableOpacity,
+
 } from 'react-native';
+
+//传递参数
+var CalendarManager = NativeModules.CalendarManager;
+
+CalendarManager.addEvent('Birthday Party', {
+  location: '4 Privet Drive, Surrey',
+  time: new Date().getTime(),//// 把日期以ISO-8601的字符串形式传递
+  description: '...'
+});
+
+//处理回调
+CalendarManager.findEvents((error,events) => {
+  if(error){
+    console.error(error);
+  }else
+  {
+    console.log("调起成功！");
+  }
+})
 
 // LayoutAnimation允许你在全局范围内创建和更新动画
 const { UIManager } = NativeModules;
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
+
+  //yellow box
 console.disableYellowBox = true;
 console.warn('yellowBox is disabled')
 export default class NavigationProject extends Component {

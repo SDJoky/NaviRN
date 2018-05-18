@@ -21,9 +21,10 @@ import {
 const { UIManager } = NativeModules;
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
-
+console.disableYellowBox = true;
+console.warn('yellowBox is disabled')
 export default class NavigationProject extends Component {
-  
+
     render() {
       return (
         <NavigatorIOS
@@ -67,7 +68,7 @@ export default class NavigationProject extends Component {
           <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
           <TouchableOpacity onPress={this._onPress}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>点击!</Text>
+            <Text style={styles.buttonText}>点击看看!</Text>
           </View>
         </TouchableOpacity>
 
